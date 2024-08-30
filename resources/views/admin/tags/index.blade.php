@@ -3,7 +3,15 @@
 @section('title', 'Blog August')
 
 @section('content_header')
+
+    @can('admin.tags.create')
+        <div class="float-right">
+            <a class="btn btn-secondary" href="{{route('admin.tags.create')}}">Add Tag</a>
+        </div>
+    @endcan
+
     <h1>List of tags</h1>
+    
 @stop
 
 @section('content')
@@ -14,10 +22,6 @@
         </div>
     @endif
     <div class="card">
-
-        <div class="card-header">
-            <a class="btn btn-secondary" href="{{route('admin.tags.create')}}">Add Tag</a>
-        </div>
 
         <div class="card-body">
             <table class="table table-striped">
@@ -32,18 +36,22 @@
                 <tbody>
                     @foreach ($tags as $tag)
                         <tr>
-                            <td>{{$tag->id}}</td>
-                            <td>{{$tag->name}}</td>
+                            <td width="10px">{{$tag->id}}</td>
+                            <td width="10px">{{$tag->name}}</td>
                             <td width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{route('admin.tags.edit', $tag)}}">Edit</a>
+                                @can('admin.tags.edit')
+                                    <a class="btn btn-primary btn-sm" href="{{route('admin.tags.edit', $tag)}}">Edit</a>
+                                @endcan
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
+                                @can('admin.tags.destroy')
+                                    <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
 
-                                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                </form>
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

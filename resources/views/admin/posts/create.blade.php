@@ -3,6 +3,7 @@
 @section('title', 'Blog August')
 
 @section('content_header')
+    <a class="btn btn-secondary float-right" href="{{ URL::previous() }}">Go back</a>
     <h1>Create New Post</h1>
 @stop
 
@@ -101,7 +102,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="extract">Extracto</label>
+                    <label for="extract">Extract</label>
                     <textarea class="form-control" name="extract" id="extract" cols="10" rows="3"></textarea>
 
                     @error('extract')

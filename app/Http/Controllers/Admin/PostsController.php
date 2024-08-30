@@ -11,10 +11,26 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\PostsRequest;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Gate;
 
-class PostsController extends Controller
+use Illuminate\Support\Facades\Cache;
+
+class PostsController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('can:admin.posts.index', only: ['index']),
+            new Middleware('can:admin.posts.create', only: ['create', 'store']),
+            new Middleware('can:admin.posts.edit', only: ['edit', 'update']),
+            new Middleware('can:admin.posts.destroy', only: ['destroy'])
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -51,6 +67,8 @@ class PostsController extends Controller
             ]);
         }
 
+        Cache::flush();
+
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
@@ -61,11 +79,14 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      */
+
+    /* 
     public function show(Post $post)
     {
         return view('admin.posts.show', $post);
     }
-
+    */
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -110,6 +131,8 @@ class PostsController extends Controller
             $post->tags()->sync($request->tags);
         }
 
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit', $post)->with('info', 'The post has been updated');
     }
 
@@ -122,6 +145,8 @@ class PostsController extends Controller
         Gate::authorize('author', $post);
 
         $post->delete();
+
+        Cache::flush();
 
         return redirect()->route('admin.posts.index', $post)->with('info', 'The post has been deleted');
     }

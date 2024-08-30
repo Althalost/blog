@@ -6,8 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
-class CategoryController extends Controller
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+
+class CategoryController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('can:admin.categories.index', only: ['index']),
+            new Middleware('can:admin.categories.create', only: ['create', 'store']),
+            new Middleware('can:admin.categories.edit', only: ['edit', 'update']),
+            new Middleware('can:admin.categories.destroy', only: ['destroy'])
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -38,14 +53,6 @@ class CategoryController extends Controller
         $category = Category::create($request->all());
 
         return redirect()->route('admin.categories.edit', $category)->with('info', 'The category has been created');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        return view('admin.categories.show', compact('category'));
     }
 
     /**

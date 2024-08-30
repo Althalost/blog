@@ -56,8 +56,8 @@
 
                         <label class="mr-2">
                                     <input type="checkbox" name="tags[]" value="{{$tag->id}}"
-                                    @foreach ($post->tags as $item)
-                                        @checked($item->id == $tag->id)
+                                    @foreach ($post->tags as $old_tag)
+                                        @checked($old_tag->id == $tag->id)
                                     @endforeach
                                     >
                                     {{$tag->name}}
@@ -118,7 +118,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="extract">Extracto</label>
+                    <label for="extract">Extract</label>
                     <textarea class="form-control" name="extract" id="extract" cols="10" rows="3">{{$post->extract}}</textarea>
 
                     @error('extract')

@@ -5,9 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class TagController extends Controller
+class TagController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('can:admin.posts.index', only: ['index']),
+            new Middleware('can:admin.posts.create', only: ['create', 'store']),
+            new Middleware('can:admin.posts.edit', only: ['edit', 'update']),
+            new Middleware('can:admin.posts.destroy', only: ['destroy'])
+        ];
+    }
+
     /**
      * Colors of tags.
      */
@@ -45,14 +59,6 @@ class TagController extends Controller
         $tag = Tag::create($request->all());
 
         return redirect()->route('admin.tags.edit', $tag)->with('info', 'The tag has been created');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tag $tag)
-    {
-        return view('admin.tags.show', compact('tag'));
     }
 
     /**

@@ -3,6 +3,7 @@
 @section('title', 'Blog August')
 
 @section('content_header')
+    <a class="btn btn-secondary float-right" href="{{ URL::previous() }}">Go back</a>
     <h1>Add new tag</h1>
 @stop
 
