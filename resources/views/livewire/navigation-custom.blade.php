@@ -1,4 +1,4 @@
-<nav class="bg-slate-100 shadow" x-data="{ open: false }">
+<nav class="bg-slate-100 dark:bg-gray-700 shadow-lg" x-data="{ open: false }">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -24,20 +24,20 @@
             </svg>
           </button>
         </div>
-
+  
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             {{-- logo --}}
           <a href="/" class="flex flex-shrink-0 items-center">
             <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
           </a>
-
+  
           {{-- Menu lg--}}
           <div class="hidden sm:ml-6 sm:block">
-            <div class="flex">
+            <div class="flex items-center">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               {{-- <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a> --}}
               @foreach ($categories as $category)
-                <a href="{{route('posts.category', $category)}}" class="text-center py-5 text-sm font-medium text-gray-700 border-effect">
+                <a href="{{route('posts.category', $category)}}" class="text-center py-5 px-3 font-medium text-gray-600 hover:bg-slate-300 hover:text-gray-800 dark:text-gray-300  dark:hover:text-gray-100 dark:hover:bg-slate-800">
                   {{$category->name}}
                 </a> 
               @endforeach
@@ -46,13 +46,13 @@
             </div>
           </div>
         </div>
-
+  
         @auth
             
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
+  
               {{-- Notifications button --}}
-            <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <button type="button" class="relative rounded-full bg-slate-200 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-800">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">View notifications</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -82,11 +82,11 @@
               -->
               <div x-show="open" x-on:click.away="open = false" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-
+  
                 <a href="{{route('profile.show')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
                   Your Profile
                 </a>
-
+  
                 @can('admin.home')
                   <a href="{{route('admin.home')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
                     Dashboard
@@ -95,31 +95,31 @@
                 
                 <form method="POST" action="{{ route('logout') }}" x-data>
                   @csrf
-
+  
                   <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2"
                   @click.prevent="$root.submit();">Sign out</a>
-
+  
                 </form>
-
+  
               </div>
             </div>
-
+  
         </div>
-
+  
         @else
-
+  
           <div>
-            <a href="{{route('login')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            <a href="{{route('login')}}" class="rounded-md px-3 py-2 mr-5 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white">
               Login
             </a>
-
-            <a href="{{route('register')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+  
+            <a href="{{route('register')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white">
               Register
             </a>
           </div>
-
+  
         @endauth
-
+  
        
       </div>
     </div>
@@ -135,7 +135,7 @@
           </a>  
         @endforeach
        
-
+  
       </div>
     </div>
   </nav>  

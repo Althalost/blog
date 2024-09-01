@@ -23,5 +23,13 @@ export default {
 
     corePlugins: {
         container: false,
-    }
+    },
+
+    safelist: [
+        'text-2xl',
+        'text-3xl',
+        {
+          pattern: /bg-(red|emerald|violet|indigo|orange|rose|lime)-(600)/,
+        },
+      ],
 };

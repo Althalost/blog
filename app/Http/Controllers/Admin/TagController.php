@@ -25,7 +25,7 @@ class TagController extends Controller implements HasMiddleware
     /**
      * Colors of tags.
      */
-    public $colors = ['red','yellow','green','blue','indigo','purple','pink'];
+    public $colors = ['red', 'orange', 'lime', 'emerald', 'indigo', 'violet', 'rose'];
 
     /**
      * Display a listing of the resource.

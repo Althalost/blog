@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
 use Illuminate\Support\Facades\Cache;
@@ -32,6 +33,8 @@ class PostController extends Controller
 
     public function show(Post $post){
 
+        $author = User::find($post->user_id);
+
         Gate::authorize('published', $post);
 
         $similar = Post::where('category_id', $post->category_id)
@@ -41,7 +44,7 @@ class PostController extends Controller
                                 ->take(4)
                                 ->get();
 
-        return view('posts.show', compact('post', 'similar'));
+        return view('posts.show', compact('post', 'similar', 'author'));
     }
 
     public function category(Category $category){
