@@ -32,8 +32,8 @@
             </main>
         </div>
 
-        <div class="text-center py-6 bg-gray-200">
-            <a href="#" class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900">
+        <div class="text-center py-6 bg-gray-200 dark:bg-gray-800">
+            <a href="#" class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-gray-200">
                 <img src="https://www.svgrepo.com/show/499962/music.svg" class="h-12 mr-3 sm:h-9" alt="Landwind Logo">
                 Blogtest
             </a>
@@ -100,5 +100,19 @@
         @stack('modals')
 
         @livewireScripts
+            <script>
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    var scrollpos = sessionStorage.getItem('scrollpos');
+                    if (scrollpos) {
+                        window.scrollTo(0, scrollpos);
+                        sessionStorage.removeItem('scrollpos');
+                    }
+                });
+            
+                window.addEventListener("beforeunload", function (e) {
+                    sessionStorage.setItem('scrollpos', window.scrollY);
+                });
+            </script>
+    
     </body>
 </html>

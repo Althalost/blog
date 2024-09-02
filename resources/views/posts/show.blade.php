@@ -1,11 +1,10 @@
 <x-app-layout>
     
-    <div class="container py-8">
-        <h1 class="text-4xl font-bold text-gray-600 my-6">{{$post->name}}</h1>
-
-        <div class="text-lg font-sans  text-gray-600 mb-6">
+    <div class="container py-8 relative">
+        <div class="text-lg font-sans  text-gray-600 mb-6 dark:text-gray-300 w-full rounded relative left-0 block bg-gray-200 dark:bg-slate-400 p-6">
+            <h1 class="text-4xl font-bold text-gray-600 my-6 dark:text-gray-200">{{$post->name}}</h1>
             {!!$post->extract!!}
-            <span class="text-gray-500 text-sm mt-4">Publication date {{$post->created_at->format('d/m/Y')}}</span>
+            <span class="text-gray-600 text-sm mt-4 dark:text-gray-400">Publication date {{$post->created_at->format('d/m/Y')}}</span>
         </div>     
 
 
@@ -23,7 +22,7 @@
                     @endif
                 </figure>
 
-                <div class="text-lg font-sans text-gray-700 mt-8">
+                <div class="text-lg font-sans text-gray-700 mt-8 dark:text-gray-300">
                     {!!$post->body!!}
                 </div>
 
@@ -32,19 +31,19 @@
             {{-- Related Content --}}
             <div class="col-span-1 lg:col-span-1">
                 <aside>
-                    <h1 class="text-2xl font-bold text-gray-600 mb-4">More of {{$post->category->name}}</h1>
+                    <h1 class="text-2xl font-bold text-gray-600 mb-4 dark:text-gray-100">More of {{$post->category->name}}</h1>
 
                     <ul>
                         @foreach ($similar as $oneSimilar)
-                            <li class="mb-4">
-                                <a class="flex text-ellipsis overflow-hidden bg-white shadow" href="{{route('posts.show', $oneSimilar)}}">
+                            <li class="mb-4 leading-4 text-sm">
+                                <a class="flex text-ellipsis overflow-hidden bg-white shadow h-20 dark:bg-gray-400" href="{{route('posts.show', $oneSimilar)}}">
                                     @if ($oneSimilar->image)
                                         <img class="flex-initial h-20 w-36 object-cover object-center" src="{{Storage::url($oneSimilar->image->url)}}" alt="">
                                     @else
                                         <img class="flex-initial h-20 w-36 object-cover object-center" src="https://cdn.pixabay.com/photo/2017/07/06/19/57/sky-2479213_1280.jpg" alt=""> 
                                     @endif
 
-                                    <span class="flex-1 w-36 ml-2 text-gray-600 px-2 py-4">{{$oneSimilar->name}}</span>
+                                    <span class="flex-1 w-36 ml-2 text-gray-600 px-2 py-5 dark:text-gray-100">{{$oneSimilar->name}}</span>
                                 </a>
                             </li>
                         @endforeach
@@ -55,26 +54,26 @@
             {{-- Author And Comments --}}
             <div class="col-span-1 lg:col-span-2">
                 
-                <div class="p-5 border rounded text-gray-500 my-8 bg-gray-100 shadow">
+                <div class="p-5 rounded text-gray-500 my-8 bg-gray-200 shadow dark:bg-slate-700 dark:text-gray-200">
                     <div class="flex items-center">
                         <img class="w-16 h-16 rounded-full mr-3 border-2 border-gray-500" src="{{$author->profile_photo_url}}" alt="jane">
                         <div class="text-sm">
                             <a href="#"
-                                class="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">
+                                class="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out dark:text-gray-200 dark:hover:text-white">
                                 {{$author->name}}
                             </a>
                             <p>Author</p>
                         </div>
                     </div>
                 
-                    <p class="mt-2 text-sm text-gray-900">
+                    <p class="mt-2 text-sm text-gray-900 dark:text-gray-200">
                         Lorem ipsum dolor sit amet, consecte adipisicing elit. Voluptatibus quia
                         Maiores et perferendis eaque
                     </p>
                 
                     <div class="flex mt-4">
                         <a href="/#" class="w-6 mx-1">
-                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600 dark:hover:text-gray-200" width="100%" height="100%"
                                 viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
                                 style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
@@ -95,7 +94,7 @@
                             </svg>
                         </a>
                         <a href="/#" class="w-6 mx-1">
-                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600 dark:hover:text-gray-200" width="100%" height="100%"
                                 viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
                                 style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
@@ -107,7 +106,7 @@
                             </svg>
                         </a>
                         <a href="/#" class="w-6 mx-1">
-                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600 dark:hover:text-gray-200" width="100%" height="100%"
                                 viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
                                 style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
@@ -131,7 +130,7 @@
                             </svg>
                         </a>
                         <a href="/#" class="w-6 mx-1">
-                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                            <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600 dark:hover:text-gray-200" width="100%" height="100%"
                                 viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
                                 style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
@@ -158,64 +157,55 @@
                 <div class="pb-8 mb-11">
                     </div>
                         <div class="container mx-auto px-4">
-                        <h2 class="text-2xl font-bold mb-4">Comments</h2>
+                        <h2 class="text-2xl font-bold mb-4 dark:text-gray-200 ">Comments</h2>
                     
                         <div class="space-y-4">
-                            <!-- Comment -->
-                            <div class="bg-white p-4 rounded shadow">
-                            <div class="flex items-center mb-2">
-                                <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
-                                <div>
-                                <h3 class="font-semibold">John Doe</h3>
-                                <p class="text-sm text-gray-500">Posted on March 15, 2024</p>
+                            <!-- Comments -->
+                            @foreach ($comments as $comment)
+                                <div class="bg-white p-4 rounded shadow dark:bg-gray-300">
+                                <div class="flex items-center mb-2">
+                                    <img src="{{$comment->user->profile_photo_url}}" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
+                                    <div>
+                                    <h3 class="font-semibold">{{$comment->author}}</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-700">Posted on {{$comment->created_at->format('d M, Y')}}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <p class="text-gray-700">Great product! I've been using it for a week now and I'm very satisfied with its
-                                performance.</p>
-                            <div class="flex items-center mt-2">
-                                <button class="text-blue-500 hover:text-blue-600 mr-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-                                </svg>
-                                Like
-                                </button>
-                                <button class="text-gray-500 hover:text-gray-600">Reply</button>
-                            </div>
-                            </div>
-                    
-                            <!-- Comment 2 -->
-                            <div class="bg-white p-4 rounded shadow">
-                            <div class="flex items-center mb-2">
-                                <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
-                                <div>
-                                <h3 class="font-semibold">Jane Smith</h3>
-                                <p class="text-sm text-gray-500">Posted on March 10, 2024</p>
+                                
+                                    <p class="text-gray-700">{{$comment->body}}
+                                
+                                </p>
+                                <div class="flex items-center mt-2">
+                                    <button class="text-blue-500 hover:text-blue-600 mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                    </svg>
+                                    Like
+                                    </button>
+                                    {{-- <button class="text-gray-500 hover:text-gray-600">Reply</button> --}}
+                                    @if (Auth::id() == $comment->user->id)
+                                        <form action="{{route('comments.destroy', $comment)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="text-red-500 hover:text-red-600 ml-3" type='submit'>Delete</button>
+                                        </form>
+                                    @endif
                                 </div>
-                            </div>
-                            <p class="text-gray-700">The shipping was fast and the product arrived in perfect condition. Highly recommended!
-                            </p>
-                            <div class="flex items-center mt-2">
-                                <button class="text-blue-500 hover:text-blue-600 mr-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-                                </svg>
-                                Like
-                                </button>
-                                <button class="text-gray-500 hover:text-gray-600">Reply</button>
-                            </div>
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
-                    
+                        
                         <!-- Add Comment Form -->
-                        <form class="mt-8 bg-white p-4 rounded-lg shadow">
+                        <form class="mt-8 bg-white p-4 rounded-lg shadow dark:bg-gray-300" action="{{route('comments.store')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
                             <h3 class="text-lg font-semibold mb-2">Add a Comment</h3>
                             <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <label for="author" class="block text-gray-700 font-medium mb-2" >Name</label>
+                            <input type="text" id="author" name="author" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-100" required>
                             </div>
                             <div class="mb-4">
-                            <label for="comment" class="block text-gray-700 font-medium mb-2">Comment</label>
-                            <textarea id="comment" name="comment" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            <label for="body" class="block text-gray-700 font-medium mb-2">Comment</label>
+                            <textarea id="body" name="body" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-100" required></textarea>
                             </div>
                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                             Post Comment
@@ -227,5 +217,6 @@
             </div>
         </div>
     </div>
+    
 
 </x-app-layout>

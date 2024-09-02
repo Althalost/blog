@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
@@ -35,6 +36,8 @@ class PostController extends Controller
 
         $author = User::find($post->user_id);
 
+        $comments = Comment::where('post_id', $post->id)->get();
+
         Gate::authorize('published', $post);
 
         $similar = Post::where('category_id', $post->category_id)
@@ -44,7 +47,7 @@ class PostController extends Controller
                                 ->take(4)
                                 ->get();
 
-        return view('posts.show', compact('post', 'similar', 'author'));
+        return view('posts.show', compact('post', 'similar', 'author' , 'comments'));
     }
 
     public function category(Category $category){

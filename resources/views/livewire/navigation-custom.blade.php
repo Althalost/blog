@@ -52,7 +52,7 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
   
               {{-- Notifications button --}}
-            <button type="button" class="relative rounded-full bg-slate-200 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-800">
+            <button type="button" class="relative rounded-full bg-slate-300 p-1 text-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-800">
               <span class="absolute -inset-1.5"></span>
               <span class="sr-only">View notifications</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -63,10 +63,10 @@
             <!-- Profile dropdown -->
             <div class="relative ml-3" x-data="{ open: false }">
               <div>
-                <button x-on:click="open = true" type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <button x-on:click="open = true" type="button" class="relative flex rounded-full bg-gray-800 text-sm border-gray-600 border focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-600" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                   <span class="absolute -inset-1.5"></span>
                   <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
+                  <img class="h-10 w-10 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
                 </button>
               </div>
     
@@ -109,11 +109,11 @@
         @else
   
           <div>
-            <a href="{{route('login')}}" class="rounded-md px-3 py-2 mr-5 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white">
+            <a href="{{route('login')}}" class="rounded-md px-3 py-2 mr-5 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white dark:text-gray-100">
               Login
             </a>
   
-            <a href="{{route('register')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white">
+            <a href="{{route('register')}}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white dark:text-gray-100">
               Register
             </a>
           </div>
