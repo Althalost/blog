@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostController;
 
-use App\Http\Controllers\CommentController;
 
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 
@@ -14,7 +13,6 @@ Route::get('category/{category}', [PostController::class, 'category'])->name('po
 
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 
-Route::resource('comment', CommentController::class)->only(['store', 'destroy'])->names('comments');
 
 
 Route::middleware([

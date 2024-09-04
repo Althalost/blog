@@ -29,7 +29,7 @@ export default {
         'text-2xl',
         'text-3xl',
         {
-          pattern: /bg-(red|emerald|violet|indigo|orange|rose|lime)-(600)/,
+          pattern: /bg-(red|emerald|violet|indigo|orange|rose|lime)-(400)/,
         },
       ],
 };

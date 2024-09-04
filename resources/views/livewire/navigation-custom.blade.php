@@ -36,8 +36,11 @@
             <div class="flex items-center">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               {{-- <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a> --}}
+              <a href="{{route('posts.index')}}" class="text-center py-5 px-3 font-medium text-gray-600 hover:bg-slate-300 hover:text-gray-800 dark:text-gray-300  dark:hover:text-gray-100 dark:hover:bg-slate-800">
+                Home
+              </a> 
               @foreach ($categories as $category)
-                <a href="{{route('posts.category', $category)}}" class="text-center py-5 px-3 font-medium text-gray-600 hover:bg-slate-300 hover:text-gray-800 dark:text-gray-300  dark:hover:text-gray-100 dark:hover:bg-slate-800">
+                <a href="{{route('posts.category', $category)}}" class="text-center py-5 px-3 font-medium text-gray-600 hover:bg-slate-300 hover:text-gray-800 {{ request()->is('category/'. $category->slug) ? 'bg-slate-300' : '' }} dark:text-gray-300  dark:hover:text-gray-100 dark:hover:bg-slate-800">
                   {{$category->name}}
                 </a> 
               @endforeach
@@ -47,6 +50,9 @@
           </div>
         </div>
   
+
+        
+
         @auth
             
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
