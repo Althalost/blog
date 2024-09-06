@@ -1,7 +1,7 @@
-<nav class="bg-slate-100 dark:bg-gray-700 shadow-lg" x-data="{ open: false }">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+<nav class="relative bg-slate-100 dark:bg-gray-700 shadow-lg" x-data="{ open: false }">
+    <div class="static mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="static z-10 flex h-16 items-center justify-between">
+        <div class="relative inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
           <button x-on:click="open = true" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
             <span class="absolute -inset-0.5"></span>
@@ -50,12 +50,12 @@
           </div>
         </div>
   
-
+        <livewire:search-input/>
         
 
         @auth
             
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div class="static inset-y-0 right-0 top-1 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
   
               {{-- Notifications button --}}
             <button type="button" class="relative rounded-full bg-slate-300 p-1 text-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 focus:ring-offset-gray-800 dark:bg-gray-800">
@@ -115,7 +115,7 @@
         @else
   
           <div>
-            <a href="{{route('login')}}" class="rounded-md px-3 py-2 mr-5 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white dark:text-gray-100">
+            <a href="{{route('login')}}" class="rounded-md px-3 py-2 mr-2 text-sm font-medium text-gray-700 hover:bg-gray-600 hover:text-white dark:text-gray-100">
               Login
             </a>
   

@@ -8,11 +8,12 @@
     @endif
 
     <div class="absolute right-2 top-2 rounded-lg bg-white bg-opacity-50 p-1">
-        <livewire:like-buttom :key="$post->id" :$post/>
-    </div>
+        {{-- <livewire:like-buttom :key="$post->id" :$post/> --}}
+            @livewire('like-buttom', ['post' => $post], key('like_buttom_' . $post->id + random_int (1,1000)))
+    </div> 
 
     <div class="px-6 py-3">
-        <h1 class="font-bold text-xl mb-2 h-11 overflow-hidden leading-5">
+        <h1 class="font-bold text-xl mb-2 h-11 text-gray-700 overflow-hidden leading-5">
             <a href="{{route('posts.show', $post)}}">{{$post->name}}</a>
         </h1>
 

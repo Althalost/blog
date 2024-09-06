@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="{{asset('/build/assets/custom.css')}}">
 
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased overflow-x-hidden">
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-slate-900">
@@ -100,6 +100,6 @@
         @stack('modals')
 
         @livewireScripts
-    
+
     </body>
 </html>
