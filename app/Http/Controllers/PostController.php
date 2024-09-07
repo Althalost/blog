@@ -9,11 +9,16 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Livewire\Attributes\Url;
+use Livewire\Attributes\On;
 
 use Illuminate\Support\Facades\Cache;
 
+use function Laravel\Prompts\search;
+
 class PostController extends Controller
 {
+
     public function index(){
 
         if(request()->page){
@@ -51,6 +56,7 @@ class PostController extends Controller
     }
 
     public function category(Category $category){
+
 
         $posts = Post::where('category_id', $category->id)
                         ->where('status', 2)

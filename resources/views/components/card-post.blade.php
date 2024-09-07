@@ -9,7 +9,7 @@
 
     <div class="absolute right-2 top-2 rounded-lg bg-white bg-opacity-50 p-1">
         {{-- <livewire:like-buttom :key="$post->id" :$post/> --}}
-            @livewire('like-buttom', ['post' => $post], key('like_buttom_' . $post->id + random_int (1,1000)))
+            @livewire('like-buttom', ['post' => $post], key('like_buttom_' . $post->id + random_int (1,10000)))
     </div> 
 
     <div class="px-6 py-3">

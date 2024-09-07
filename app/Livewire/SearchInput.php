@@ -2,21 +2,21 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
-
+use Illuminate\Routing\Route as Routing;
 
 class SearchInput extends Component
 {
 
     public $search = '';
 
-    public function updatedSearch(){
 
+    public function update(){
         $this->dispatch('search' , search: $this->search);
     }
 
-    public function update(){
-
+    public function updated(){
         $this->dispatch('search' , search: $this->search);
     }
 
