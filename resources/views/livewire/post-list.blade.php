@@ -20,17 +20,17 @@
 
 
                         <div class="text-gray-700 dark:text-white text-base text-wrap overflow-hidden h-24 leading-6 md:h-20 md:leading-4 my-3">
-                            {!!$post->extract!!}
+                            {!!$post->getExcerpt(700)!!}
                         </div>
 
                         <div> 
                             @foreach ($post->tags as $tag)
-                                <a href="{{route('posts.tag', $tag)}}" class="inline-block font-semibold px-3 h-6 bg-{{$tag->color}}-400 text-white rounded-md shadow">{{$tag->name}}</a>
+                                <a href="{{route('posts.tag', $tag)}}" class="inline-block font-semibold px-2 h-6 bg-{{$tag->color}}-400 text-white rounded-md shadow">{{$tag->name}}</a>
                             @endforeach
                         </div>
                         
                     </div>
-                    
+                    <span class="absolute bottom-8 right-3 text-sm text-gray-600 font-semibold dark:text-gray-200 block ml-6"> {{$post->getReadingTime()}} min Read</span>
                     <span class="absolute bottom-3 right-3 text-sm text-gray-600 dark:text-gray-200 block ml-6">Pubished on {{$post->created_at->format('d M y')}}</span>
                 </article>
             @else

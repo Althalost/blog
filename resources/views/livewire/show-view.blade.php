@@ -1,6 +1,6 @@
 <div class="container py-8 relative">
     @if ($search == '')
-           <div class="text-lg font-sans  text-gray-600 mb-6 dark:text-gray-300 w-full rounded relative left-0 block bg-gray-200 dark:bg-slate-400 p-6">
+    <div class="text-lg font-sans  text-gray-600 mb-6 dark:text-gray-200 w-full rounded relative left-0 block bg-gray-200 dark:bg-slate-600 p-6">
         <h1 class="text-4xl font-bold text-gray-600 my-6 dark:text-gray-200">{{$post->name}}</h1>
         {!!$post->extract!!}
         <span class="text-gray-600 text-sm mt-4 dark:text-gray-400">Published on {{$post->created_at->format('M d, Y')}}</span>
@@ -30,12 +30,12 @@
         {{-- Related Content --}}
         <div class="col-span-1 lg:col-span-1">
             <aside>
-                <h1 class="text-2xl font-bold text-gray-600 mb-4 dark:text-gray-100">More of {{$post->category->name}}</h1>
+                <h1 class="text-2xl font-bold text-gray-600 mb-4 dark:text-gray-100">More of "{{$post->category->name}}"</h1>
 
                 <ul>
                     @foreach ($similar as $oneSimilar)
                         <li class="mb-4 leading-4 text-sm">
-                            <a class="flex text-ellipsis overflow-hidden bg-white shadow h-20 dark:bg-gray-400" href="{{route('posts.show', $oneSimilar)}}">
+                            <a class="flex text-ellipsis overflow-hidden bg-white shadow h-20 dark:bg-gray-500" href="{{route('posts.show', $oneSimilar)}}">
                                 @if ($oneSimilar->image)
                                     <img class="flex-initial h-20 w-36 object-cover object-center" src="{{Storage::url($oneSimilar->image->url)}}" alt="">
                                 @else

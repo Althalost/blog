@@ -18,15 +18,18 @@
         </h1>
 
         <div class="text-gray-700 text-base text-wrap overflow-hidden h-12 leading-4">
-            {!!$post->extract!!}
+            {!!$post->getExcerpt(140)!!}
         </div>
     </div>
 
-    <div class="px-6 pt-1 mb-6 h-10 relative bottom-2 align-bottom">
+    <div class="px-6 pt-1 mt-1 h-10 relative bottom-1 align-bottom">
         @foreach ($post->tags as $tag)
             <a class="inline-block bg-{{$tag->color}}-400 rounded-md px-3 text-sm font-semibold text-gray-700 mr-2 dark:bg-white" href="{{route('posts.tag', $tag)}}">{{$tag->name}}</a>
+            @if ($loop->iteration == 3)
+                @break
+            @endif
         @endforeach
-        <span class="text-sm text-gray-600 absolute right-3 bottom-1">Pubished on {{$post->created_at->format('d M y')}}</span>
+        <span class="text-sm text-gray-600 absolute right-4 bottom-0">Pubished on {{$post->created_at->format('d M y')}}</span>
+        <span class="text-sm text-gray-600 font-semibold absolute right-4 bottom-5"> {{$post->getReadingTime()}} min Read</span>
     </div>
-
 </article>

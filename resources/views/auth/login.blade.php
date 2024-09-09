@@ -12,9 +12,10 @@
             </div>
         @endsession
 
-        <form method="POST" action="{{ route('login') }}">
+        <form class="pt-2 static px-6 h-80" method="POST" action="{{ route('login') }}">
             @csrf
-
+            <h1 class="h1 text-3xl font-semibold text-gray-700">Welcome back</h1>
+            <h2 class="h2 text-1xl font-semibold text-gray-500 mb-3"> to TheBlog</h2>
             <div>
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
@@ -31,8 +32,7 @@
                     <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-4 h-15 w-full bg-gray-200 absolute bottom-0 left-0 p-4 pr-6">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}

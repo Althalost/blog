@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 
 class Post extends Model
@@ -39,5 +40,15 @@ class Post extends Model
     //Relacion uno a uno polimorfica
     public function image(){
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function getExcerpt(Int $longer){
+        return Str::limit(strip_tags($this->extract), $longer);
+    }
+
+    public function getReadingTime(){
+        $mins = round(str_word_count($this->body) / 250);
+
+        return ($mins < 1) ? 1 : $mins;
     }
 }
