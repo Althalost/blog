@@ -22,6 +22,10 @@ class PostList extends Component
 
     public $category_id = '';
 
+    public $tag_id = '';
+
+    public $popular = false;
+
     #[Url()]
     public $search = '';
 
@@ -32,23 +36,33 @@ class PostList extends Component
         $this->search = $search;
     }
 
+    public function setPopular($select){
+        $this->popular = $select;
+    }
+
 
     #[Computed()]
     public function posts()
     {
-        if($this->category_id){
-             return Post::where('status', 2)
-                            ->where('category_id', $this->category_id)
-                            ->where('name','LIKE', "%{$this->search}%")
-                            ->latest('id')
-                            ->paginate(9);
-        }
-       else{
-            return Post::where('status', 2)
-                            ->where('name','LIKE', "%{$this->search}%")
-                            ->latest('id')
-                            ->paginate(10);
-        }
+   
+        return Post::where('status', 2)
+                    ->when($this->category_id, function ($query) {
+                        $query->where('category_id', $this->category_id);
+                    })
+                    ->when($this->tag_id, function ($query) {
+                        $query->whereHas('tags', fn ($q) => $q->where('tag_id', $this->tag_id));
+                    })
+                    ->when($this->popular, function ($query) {
+                        //like count
+                        //order by like count
+                        $query->withCount('likes')
+                        ->orderBy("likes_count", 'desc');
+                        //likes_count
+                    })
+                    ->where('name','LIKE', "%{$this->search}%")
+                    ->latest('id')
+                    ->paginate(9);
+
     }
 
     public function render()
