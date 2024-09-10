@@ -51,4 +51,24 @@ class Post extends Model
 
         return ($mins < 1) ? 1 : $mins;
     }
+
+    public function  scopeWithCategory($query, Int $category_id){
+       $query->where('category_id', $category_id);
+    }
+
+   public function  scopeWithTag($query, Int $tag_id){
+        $query->whereHas('tags', fn ($q) => $q->where('tag_id', $tag_id));
+    }
+
+    public function  scopeSearch($query, $search = ''){
+        $query->where('name','LIKE', "%{$search}%");
+    }
+
+    public function  scopePopular($query){
+         //like count
+        //order by like count
+        $query->withCount('likes')
+        ->orderBy("likes_count", 'desc');
+        //likes_count
+    }
 }

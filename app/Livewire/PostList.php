@@ -47,19 +47,15 @@ class PostList extends Component
    
         return Post::where('status', 2)
                     ->when($this->category_id, function ($query) {
-                        $query->where('category_id', $this->category_id);
+                        $query->withCategory($this->category_id);
                     })
                     ->when($this->tag_id, function ($query) {
-                        $query->whereHas('tags', fn ($q) => $q->where('tag_id', $this->tag_id));
+                        $query->withTag($this->tag_id);
                     })
                     ->when($this->popular, function ($query) {
-                        //like count
-                        //order by like count
-                        $query->withCount('likes')
-                        ->orderBy("likes_count", 'desc');
-                        //likes_count
+                        $query->popular();
                     })
-                    ->where('name','LIKE', "%{$this->search}%")
+                    ->search($this->search)
                     ->latest('id')
                     ->paginate(9);
 

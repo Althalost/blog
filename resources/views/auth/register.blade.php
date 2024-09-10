@@ -6,8 +6,11 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form class="px-6" method="POST" action="{{ route('register') }}">
             @csrf
+            <div>
+                <h1 class="h1 text-3xl font-semibold text-gray-700 text-center mb-6">Welcome to theBlog</h1>
+            </div>
 
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
