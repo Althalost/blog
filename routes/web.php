@@ -13,6 +13,8 @@ Route::get('category/{category}', [PostController::class, 'category'])->name('po
 
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 
+Route::get('blogger/{blogger}', [PostController::class, 'blogger'])->name('posts.blogger');
+
 
 
 Route::middleware([

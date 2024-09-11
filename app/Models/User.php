@@ -85,4 +85,8 @@ class User extends Authenticatable
     public function hasLiked(Post $post){
         return $this->likes()->where('post_id', $post->id)->exists();
     }
+
+    public function blogger(){
+        return $this->hasOne(Blogger::class);
+    }
 }

@@ -6,7 +6,7 @@
     <div class="static grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 mb-10 md:mb-0 lg:mt-8 gap-6">
         @if ($this->posts->count())
             @foreach ($this->posts as $post)
-                @if ($loop->first and $this->posts->onFirstPage() and $search == '' and $category_id == '' and $tag_id == '')
+                @if ($loop->first and $this->posts->onFirstPage() and $search == '' and $category_id == '' and $tag_id == '' and $blogger_id == '')
                     <article class="w-full relative rounded-lg shadow-lg col-span-1 md:col-span-2 lg:col-span-3 mb-11 overflow-hidden bg-white hover:shadow-gray-500/50 dark:bg-gray-500" >
                         <div class="w-full h-96 bg-cover bg-center p-8 align-bottom relative" style="background-image: url(@if($post->image) {{Storage::url($post->image->url)}} @else https://cdn.pixabay.com/photo/2017/07/06/19/57/sky-2479213_1280.jpg @endif )">
                             <h1 class="text-4xl text-white leading-10 font-bold mt-2 text-ellipsis overflow-hidden block absolute bottom-9">

@@ -345,6 +345,12 @@ return [
         ],
         ['header' => 'BLOG OPTIONS'],
         [
+            'text' => 'Blogger Profile',
+            'route' => 'admin.bloggers.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'admin.bloggers.index',
+        ],
+        [
             'text' => 'Post list',
             'route' => 'admin.posts.index',
             'icon' => 'fas fa-fw fa-clipboard',

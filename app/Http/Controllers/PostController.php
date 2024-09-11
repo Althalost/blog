@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blogger;
 use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -67,9 +68,12 @@ class PostController extends Controller
     }
 
     public function tag(Tag $tag){
-        
-        $posts =  $tag->posts()->where('status', 2)->latest('id')->paginate(6);
 
-        return view('posts.tag', compact('posts', 'tag'));
+        return view('posts.tag', compact('tag'));
+    }
+
+    public function blogger($id){
+
+        return view('posts.blogger', compact('id'));
     }
 }

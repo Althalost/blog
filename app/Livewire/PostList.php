@@ -24,6 +24,8 @@ class PostList extends Component
 
     public $tag_id = '';
 
+    public $blogger_id = '';
+
     public $popular = false;
 
     #[Url()]
@@ -51,6 +53,9 @@ class PostList extends Component
                     })
                     ->when($this->tag_id, function ($query) {
                         $query->withTag($this->tag_id);
+                    })
+                    ->when($this->blogger_id, function ($query) {
+                        $query->blogger($this->blogger_id);
                     })
                     ->when($this->popular, function ($query) {
                         $query->popular();

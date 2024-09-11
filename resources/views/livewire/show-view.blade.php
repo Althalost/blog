@@ -3,7 +3,13 @@
     <div class="text-lg font-sans  text-gray-600 mb-6 dark:text-gray-200 w-full rounded relative left-0 block bg-gray-200 dark:bg-slate-600 p-6">
         <h1 class="text-4xl font-bold text-gray-600 my-6 dark:text-gray-200">{{$post->name}}</h1>
         {!!$post->extract!!}
-        <span class="text-gray-600 text-sm mt-4 dark:text-gray-400">Published on {{$post->created_at->format('M d, Y')}}</span>
+            <div class="block">
+                <img class="w-10 h-10 rounded-full mr-3 mb-4 border-2 border-gray-500 inline-block" src="{{$post->user->profile_photo_url}}" alt="author-profile-photo">
+            <div class="inline-block h-10">
+                <span class="text-gray-700 text-sm mt-4 dark:text-gray-300 block">{{$post->user->name}}</span>
+                <span class="text-gray-600 text-sm dark:text-gray-400 block">Published on {{$post->created_at->format('M d, Y')}}</span>
+            </div>
+        </div>
     </div>     
 
 
@@ -55,9 +61,9 @@
             
             <div class="p-5 rounded text-gray-500 my-8 bg-gray-200 shadow dark:bg-slate-700 dark:text-gray-200">
                 <div class="flex items-center">
-                    <img class="w-16 h-16 rounded-full mr-3 border-2 border-gray-500" src="{{$post->user->profile_photo_url}}" alt="jane">
+                    <img class="w-16 h-16 rounded-full mr-3 border-2 border-gray-500" src="{{$post->user->profile_photo_url}}" alt="author-profile-photo">
                     <div class="text-sm">
-                        <a href="#"
+                        <a href="{{route('posts.blogger', $post->user->id)}}"
                             class="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out dark:text-gray-200 dark:hover:text-white">
                             {{$post->user->name}}
                         </a>
@@ -65,10 +71,11 @@
                     </div>
                 </div>
             
-                <p class="mt-2 text-sm text-gray-900 dark:text-gray-200">
-                    Lorem ipsum dolor sit amet, consecte adipisicing elit. Voluptatibus quia
-                    Maiores et perferendis eaque
-                </p>
+                @if (isset($post->user->blogger->presentation))
+                    <p class="mt-2 text-sm text-gray-900 dark:text-gray-200">
+                        {{$post->user->blogger->presentation}}
+                    </p>
+                @endif
             
                 <div class="flex mt-4">
                     <a href="/#" class="w-6 mx-1">

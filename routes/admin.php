@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BloggerController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\HomeController;
@@ -21,3 +22,5 @@ Route::resource('categories', CategoryController::class)->except('show')->names(
 Route::resource('tags', TagController::class)->except('show')->names('admin.tags');
 
 Route::resource('posts', PostsController::class)->except('show')->names('admin.posts');
+
+Route::resource('bloggers', BloggerController::class)->except('show','destroy')->names('admin.bloggers');

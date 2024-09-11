@@ -56,8 +56,12 @@ class Post extends Model
        $query->where('category_id', $category_id);
     }
 
-   public function  scopeWithTag($query, Int $tag_id){
+    public function  scopeWithTag($query, Int $tag_id){
         $query->whereHas('tags', fn ($q) => $q->where('tag_id', $tag_id));
+    }
+
+    public function  scopeBlogger($query, Int $blogger_id){
+        $query->where('user_id', $blogger_id);
     }
 
     public function  scopeSearch($query, $search = ''){

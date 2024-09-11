@@ -46,6 +46,14 @@ class RolesSeeder extends Seeder
         Permission::create(['name' => 'admin.tags.destroy',
                             'description' => 'Access to delete tags'])->syncRoles([$role1]);
 
+        Permission::create(['name' => 'admin.bloggers.index',
+                            'description' => 'Access to view of bloggers presentation'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.bloggers.create',
+                            'description' => 'Access to create blogger presentation'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.bloggers.edit',
+                            'description' => 'Access to edit blogger presentation'])->syncRoles([$role1, $role2]);
+
+
         Permission::create(['name' => 'admin.posts.index',
                             'description' => 'Access to list of posts'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.posts.create',
