@@ -36,7 +36,7 @@
         {{-- Related Content --}}
         <div class="col-span-1 lg:col-span-1">
             <aside>
-                <h1 class="text-2xl font-bold text-gray-600 mb-4 dark:text-gray-100">More of "{{$post->category->name}}"</h1>
+                <h1 class="text-2xl font-bold border-b-2 border-gray-400 text-gray-600 mb-4 dark:text-gray-100">More of "{{$post->category->name}}"</h1>
 
                 <ul>
                     @foreach ($similar as $oneSimilar)

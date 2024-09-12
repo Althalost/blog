@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function index(){
 
-        if(request()->page){
+     /*    if(request()->page){
             $key = 'posts' . request()->page;
         }else{
             $key = 'post';
@@ -33,9 +33,9 @@ class PostController extends Controller
         }else{
             $posts = Post::where('status', 2)->latest('id')->paginate(10);
             Cache::put($key, $posts);
-        }
+        } */
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index'/* , compact('posts') */);
     }
 
     public function show(Post $post){
@@ -58,13 +58,7 @@ class PostController extends Controller
 
     public function category(Category $category){
 
-
-        $posts = Post::where('category_id', $category->id)
-                        ->where('status', 2)
-                        ->latest('id')
-                        ->paginate(6);
-
-        return view('posts.category', compact('posts', 'category'));
+        return view('posts.category', compact('category'));
     }
 
     public function tag(Tag $tag){

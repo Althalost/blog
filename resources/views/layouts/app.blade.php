@@ -34,18 +34,11 @@
 
         <div class="text-center py-6 bg-gray-200 dark:bg-gray-800">
             <a href="#" class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-gray-200">
-                <img src="https://www.svgrepo.com/show/499962/music.svg" class="h-12 mr-3 sm:h-9" alt="Landwind Logo">
-                Blogtest
+                {{-- <img src="" class="h-12 mr-3 sm:h-9" alt=" Logo"> --}}
+                <span class="text-3xl text-gray-800 font-bold ">Alth-dev</span>
             </a>
         
-            <span class="block text-sm text-center text-gray-500">© 2021-2022 Landwind™. All Rights Reserved.
-                Built with 
-                <a href="https://flowbite.com"
-                    class="text-purple-600 hover:underline">Flowbite</a> and 
-                    <a
-                    href="https://tailwindcss.com" class="text-purple-600 hover:underline">Tailwind
-                    CSS
-                </a>.
+            <span class="block text-sm text-center text-gray-500"> 2021-2024 Altha-dev™.
             </span>
         
             <ul class="flex justify-center mt-5 space-x-5">

@@ -112,7 +112,7 @@
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur reprehenderit mollitia, sunt consectetur ducimus ipsam accusamus quas, unde obcaecati nihil voluptates! Reprehenderit dolorem sequi quibusdam officia temporibus sit atque quam.
+                        <p>Images must be less than 5mb, png/jpg format.
                         </p>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-<div>
+<div class="pb-8">
     <header class="mx-5 relative">
         <button wire:click="setPopular(false)" class="{{ !$popular ? 'border-b-2 border-gray-600' : 'text-gray-500'}} hidden px-2 md:inline-block text-2xl pb-2 text-start font-light dark:text-gray-200">Lastest posts</button>
         <button wire:click="setPopular(true)" class="{{ $popular ? 'border-b-2 border-gray-600' : 'text-gray-500'}} hidden px-2 ml-5 md:inline-block text-2xl pb-2 text-start font-light dark:text-gray-200">Popular</button>
@@ -40,7 +40,7 @@
                     </article>
                 @else
 
-                    <x-card-post :post="$post" :key="$post->id"/>
+                    <x-card-post :post="$post" wire:key="{{$post->id}}"/>
 
                 @endif
                 
